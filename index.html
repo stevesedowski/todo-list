@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html ng-app="listApp">
+<head>
+<link href="http://getbootstrap.com/dist/css/bootstrap.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="/css/main.css">
+  <meta charset="utf-8">
+  <title>Watch The To-Do List Grow (and Shrink)</title>
+</head>
+<body>
+
+  <section class="arrList" ng-controller="listCtrl">
+    <h3>To-Do List</h3>
+    <div ng-class="showDos" ng-show="ToDoSum"> Number of things to do: {{ToDoSum}} </div>
+    <form ng-submit="addTodo($event)">
+      <input type="text" class="form-control" placeholder="Enter a todo..." required ng-model="nextTodo">
+    </form>
+    <div>
+      <div class="listRight">
+        <ul ng-repeat="todo in todos">
+          <li>{{ todo }}&nbsp;<span ng-click="subtractTodo($index)">x</span></li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <div class="resetRight">
+        <a href="#" ng-click="resetTodos($event)">Reset todos</a>
+      </div>
+    </div> 
+  </section>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.min.js"></script>
+  <script type="text/javascript" src="/js/main.js"></script>
+</body>
+</html>
